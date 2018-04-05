@@ -13,10 +13,7 @@ if [ ! -z "$VOLUME" ];
    echo 'set cf volume '
 fi
 echo 'volume' = $CODEFRESH_VOLUME
-if [ ! -z "$NEW_RELEASE" ];
-then
-  echo "new release is added" && rm $CODEFRESH_VOLUME/lastversion
-fi
+
 if [ ! -f $CODEFRESH_VOLUME/lastversion ];
   then echo 'file not exists'
   mkdir $CODEFRESH_VOLUME && true
@@ -27,8 +24,14 @@ fi
 
 cat  $CODEFRESH_VOLUME/lastversion
 echo '----'
+if [ ! -z "$NEW_RELEASE" ];
+then
+  echo "new release is added" && rm $CODEFRESH_VOLUME/lastversion
+  export VERSION=$RELEASE_VERSION
+else
 export VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
+fi
 echo 'current version is ' $VERSION
 cat $CODEFRESH_VOLUME/lastversion && echo 'was last version'
-node ../cli increment --version $VERSION | cat > $CODEFRESH_VOLUME/lastversion
-#cf_export CF_VERSION=$(cat /codefresh/volume/cache/lastversion)
+node ./cli increment --version $VERSION | cat > $CODEFRESH_VOLUME/lastversion
+cf_export CF_VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
