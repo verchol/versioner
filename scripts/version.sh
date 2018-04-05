@@ -1,5 +1,5 @@
 
-export CODEFRESH_VOLUME=/codefresh/volume/cache/
+export CODEFRESH_VOLUME=/codefresh/volume/cache
 
 if [ -z "$RELEASE_VERSION" ];
  then
@@ -34,4 +34,4 @@ fi
 echo 'current version is ' $VERSION
 cat $CODEFRESH_VOLUME/lastversion && echo 'was last version'
 node ./cli increment --version $VERSION | cat > $CODEFRESH_VOLUME/lastversion
-cf_export CF_VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
+#cf_export CF_VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
