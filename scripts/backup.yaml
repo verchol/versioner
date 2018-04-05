@@ -1,0 +1,23 @@
+- ls /codefresh/volume/cache/ && true
+    - |-
+         if [! -z "$NEW_RELEASE" ];
+         then
+           echo "new release is added" && rm /codefresh/volume/cache/lastversion
+         fi
+    - |-
+         if [ ! -f /codefresh/volume/cache/lastversion ];
+         then echo 'file not exists' && mkdir /codefresh/volume/cache && touch /codefresh/volume/cache/lastversion && echo $RELEASE_VERSION > /codefresh/volume/cache/lastversion
+         fi
+
+    - echo '-----'
+    #- export v='1.0.0'
+    #- echo  $v>/codefresh/volume/cache/lastversion
+    - cat  /codefresh/volume/cache/lastversion
+    - echo '----'
+    - export VERSION=$(cat /codefresh/volume/cache/lastversion)
+    - echo 'current version is ' $VERSION
+    - cat /codefresh/volume/cache/lastversion && echo 'was last version'
+    - node ./cli increment --version $VERSION | cat >/codefresh/volume/cache/lastversion
+    - cf_export CF_VERSION=$(cat /codefresh/volume/cache/lastversion)
+   # - rm /codefresh/volume/cache/lastversion
+   
