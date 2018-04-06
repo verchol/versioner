@@ -28,12 +28,13 @@ cat  $CODEFRESH_VOLUME/lastversion
 echo '----'
 if [ ! -z "$NEW_RELEASE" ];
 then
-  echo "new release is added"  
+  echo new release is $NEW_RELEASE
+  echo "new release is added"
   export VERSION=$RELEASE_VERSION
 else
 export VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
 fi
 echo 'current version is ' $VERSION
-cat $CODEFRESH_VOLUME/lastversion
+cat $CODEFRESH_VOLUM`E/lastversion
 node ./cli increment --version $VERSION | cat > $CODEFRESH_VOLUME/lastversion
 #cf_export CF_VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
