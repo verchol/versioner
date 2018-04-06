@@ -17,6 +17,8 @@ echo 'volume' = $CODEFRESH_VOLUME
 if [ ! -f $CODEFRESH_VOLUME/lastversion ];
   then echo 'file does not exist'
   mkdir -p $CODEFRESH_VOLUME && true
+  echo $CODEFRESH_VOLUME created
+  ls -l $CODEFRESH_VOLUME
   touch $CODEFRESH_VOLUME/lastversion
   echo release is $RELEASE_VERSION
   echo $RELEASE_VERSION > $CODEFRESH_VOLUME/lastversion
@@ -32,6 +34,6 @@ else
 export VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
 fi
 echo 'current version is ' $VERSION
-cat $CODEFRESH_VOLUME/lastversion && echo 'was last version'
+cat $CODEFRESH_VOLUME/lastversion  
 node ./cli increment --version $VERSION | cat > $CODEFRESH_VOLUME/lastversion
 #cf_export CF_VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
