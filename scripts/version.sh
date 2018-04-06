@@ -15,8 +15,8 @@ fi
 echo 'volume' = $CODEFRESH_VOLUME
 
 if [ ! -f $CODEFRESH_VOLUME/lastversion ];
-  then echo 'file not exists'
-  mkdir $CODEFRESH_VOLUME && true
+  then echo 'file does not exist'
+  mkdir -p $CODEFRESH_VOLUME && true
   touch $CODEFRESH_VOLUME/lastversion
   echo release is $RELEASE_VERSION
   echo $RELEASE_VERSION > $CODEFRESH_VOLUME/lastversion
