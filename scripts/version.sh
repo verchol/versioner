@@ -37,4 +37,3 @@ fi
 echo 'current version is ' $VERSION
 cat $CODEFRESH_VOLUME/lastversion
 node ./cli increment --version $VERSION | cat > $CODEFRESH_VOLUME/lastversion
-#cf_export CF_VERSION=$(cat $CODEFRESH_VOLUME/lastversion)
