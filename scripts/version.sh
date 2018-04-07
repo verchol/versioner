@@ -26,7 +26,7 @@ fi
 
 cat  $CODEFRESH_VOLUME/lastversion
 echo is new release - $RELEASE_VERSION
-if [ ! -z "$RELEASE_VERSION"] ;
+if [ ! -z "$RELEASE_VERSION" ] ;
 then
   echo new release is $NEW_RELEASE
   echo "new release is added"
