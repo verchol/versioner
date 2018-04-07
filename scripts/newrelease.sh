@@ -9,5 +9,6 @@ if echo "$TAG" | grep -q "$ERROR"; then
   echo "no tag detected";
 else
   echo "there is tag";
+  mkdir -p /codefresh/volume/cache  
   echo TAG=$(cat v1)>/codefresh/volume/cache/tag
 fi
