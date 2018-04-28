@@ -1,7 +1,7 @@
 
 export CODEFRESH_VOLUME=/codefresh/volume/cache
 
-if [ -z "$RELEASE_VERSION" ];
+if   [ -z "$RELEASE_VERSION" ] && [ ! -f $CODEFRESH_VOLUME/lastversion ] ;
  then
    export RELEASE_VERSION='1.0.0'
    echo 'set cf default release version  '
