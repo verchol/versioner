@@ -14,6 +14,6 @@
     "lodash": "^4.17.5",
     "minimist": "^1.2.0",
     "semver-diff": "^2.1.0",
-    "semver-regex": "^2.0.0"
+    "semver-regex": "^3.1.3"
   }
 }
