@@ -12,7 +12,7 @@
   "dependencies": {
     "debug": "^3.1.0",
     "lodash": "^4.17.5",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "semver-diff": "^2.1.0",
     "semver-regex": "^2.0.0"
   }
